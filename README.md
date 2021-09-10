@@ -32,7 +32,7 @@
 
 ### How to Install
 
-1. `bench get-app https://github.com/yrestom/POS-Awesome.git`
+1. `bench get-app https://github.com/davidcastilloc/POS-Awesome.git`
 2. `bench setup requirements`
 3. `bench build --app posawesome`
 4. `bench restart`
