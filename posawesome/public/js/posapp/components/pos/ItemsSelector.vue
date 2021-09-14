@@ -221,8 +221,16 @@ export default {
         return;
       }
       const qty = this.get_item_qty(this.first_search);
+      var rate_item =  this.filtred_items[0].rate;
+
       const new_item = { ...this.filtred_items[0] };
-      new_item.qty = flt(qty);
+      var DATOS = {
+        item_precio_por_libra: rate_item,
+        item_precio_total: flt(qty) , 
+        item_filtrado: this.filtred_items[0]
+      };
+      console.log(DATOS);
+      new_item.qty = flt((DATOS.item_precio_por_libra * DATOS.item_precio_total)/DATOS.item_precio_por_libra/DATOS.item_precio_por_libra);
       new_item.item_barcode.forEach((element) => {
         if (this.search == element.barcode) {
           new_item.uom = element.posa_uom;
@@ -232,6 +240,7 @@ export default {
         new_item.to_set_serial_no = this.flags.serial_no;
       }
       this.add_item(new_item);
+      console.log("NUEVO ITEM", new_item);
       this.search = null;
       this.first_search = null;
       this.debounce_search = null;
@@ -434,6 +443,7 @@ export default {
 
   mounted() {
     this.scan_barcoud();
+    console.log("DAVID CASTILLO EDIT")
   },
 };
 </script>
